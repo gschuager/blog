@@ -3,10 +3,13 @@
   <title><%= @getPreparedTitle() %></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="alternate" type="application/rss+xml" title="Germán Schuager &raquo; Feed" href="http://blog.schuager.com/rss.xml" />
   <%- @getBlock("meta").toHTML() %>
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
   <%- @getBlock("styles").toHTML() %>
   <link rel="stylesheet" href="/assets/github.css">
   <link rel="stylesheet" href="/assets/site.css">
@@ -16,14 +19,19 @@
   
   <div class="header">
     <div class="container">
-      <h1>Germán Schuager's blog</h1>
+      <h1><a href="/">Germán Schuager's blog</a></h1>
     </div>
   </div>
   <div class="menu">
     <div class="container">
-      <ul>
+      <ul class="pull-left">
         <li><a href="/">Posts</a></li>
         <li><a href="/about.html">About</a></li>
+      </ul>
+      <ul class="pull-right no-underline">
+        <li><a href="mailto:gschuager@gmail.com"><i class="icon-envelope"></i></a></li>
+        <li><a href="https://twitter.com/gschuager"><i class="icon-twitter"></i></a></li>
+        <li><a href="http://feeds.feedburner.com/gschuager"><i class="icon-rss"></i></a></li>
       </ul>
     </div>
   </div>

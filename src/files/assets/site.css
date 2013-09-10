@@ -15,14 +15,18 @@ code {
 
 .header {
   background-color: #262630;
-  color: #DDD;
   padding: 1px 15px 10px;
+}
+.header a, .header a:hover {
+  color: #DDD;
+  text-decoration: none;
 }
 
 .menu {
-  background-color: #234;
+  background-color: #345;
   padding: 5px 0px;
   margin-bottom: 10px;
+  box-shadow: 0 2px 5px #888888;
 }
 
 .menu ul {
@@ -34,11 +38,10 @@ code {
 .menu li {
   display: inline-block;
   padding-right: 20px;
-  color: #EEE;
 }
 
 .menu li > a {
-  color: #AAA;
+  color: #BBB;
 }
 
 .sidebar {
@@ -56,3 +59,7 @@ code {
   padding-bottom: 5px;
   border-bottom: 1px #EEE solid;
 }
+
+.no-underline a, .no-underline a:hover {
+  text-decoration: none;
+};

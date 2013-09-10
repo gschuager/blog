@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Polymorphic query using interfaces
-originalUrl: /2008/12/24/polymorphic-query-using-interfaces.html
+originalUrl: /2008/12/polymorphic-query-using-interfaces.html
 date: 2008-12-23 21:11
 comments: true
 categories: ['nhibernate']
