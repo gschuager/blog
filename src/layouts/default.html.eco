@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title><%= @getPreparedTitle() %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- @getBlock("meta").toHTML() %>
+
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+  <%- @getBlock("styles").toHTML() %>
+  <link rel="stylesheet" href="/assets/github.css">
+  <link rel="stylesheet" href="/assets/site.css">
+
+</head>
+<body>
+  
+  <div class="header">
+    <div class="container">
+      <h1>Germán Schuager's blog</h1>
+    </div>
+  </div>
+  <div class="menu">
+    <div class="container">
+      <ul>
+        <li><a href="/">Posts</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%- @content %>
+      </div>
+    </div>
+  </div>
+
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <%- @getBlock("scripts").toHTML() %>
+</body>
+</html>

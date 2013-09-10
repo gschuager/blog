@@ -1,0 +1,7 @@
+---
+layout: default
+---
+<h1><%= @document.title %></h1>
+<p class="post-info">Written by <a href="/about.html">Germán Schuager</a> on <%= @getFormattedDate(@document.date) %></p>
+
+<div><%- @content %></div>

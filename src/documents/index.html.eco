@@ -1,0 +1,23 @@
+---
+layout: 'default'
+title: 'Home'
+---
+
+<div>
+  <ul class="list-unstyled">
+    <% for post in @getCollection("posts").toJSON(): %>
+    <li>
+      <div class="row row-post">
+        <div class="col-xs-9">
+          <a href="<%= post.url %>"><%= post.title %></a>
+        </div>
+        <div class="col-xs-3">
+          <div class="text-muted">
+            <%= @getFormattedDate(post.date) %>
+          </div>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>

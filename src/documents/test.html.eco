@@ -1,0 +1,10 @@
+---
+layout: 'default'
+title: 'Test'
+---
+
+<pre>
+  <code>
+<%- JSON.stringify(@getFilesAtPath("posts"), null, 4) %>
+  </code>
+</pre>
