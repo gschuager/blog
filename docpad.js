@@ -1,4 +1,5 @@
 var moment = require('moment');
+var path = require('path');
 
 var post_date_regex = new RegExp("([0-9]+-)*");
 
@@ -38,15 +39,56 @@ var docpadConfig = {
 
     renderBefore: function(opts) {
       var posts = this.docpad.getCollection('posts');
+
+      // ignore DRAFTs
       posts.forEach(function(post) {
-        var dateUrl = moment.utc(post.getMeta('date')).format('/YYYY/MM') + "/" + post.get('outFilename').replace(post_date_regex, '');
-        var originalUrl = post.get('originalUrl');
-        if (originalUrl && (originalUrl != dateUrl)) {
-          throw 'Urls do not match "' + originalUrl + '" <-> "' + dateUrl + '"';
+        var originalFilename = post.get('outFilename');
+        if (/^[dD][rR][aA][fF][tT]/.test(originalFilename)) {
+          console.log('skipped draft: ' + originalFilename);
+          post.set('ignore', true);
+          post.getMeta().set('ignore', true)
+        }
+      });
+
+
+      console.log('');
+      var count = 0;
+
+      // custom routing
+      posts.forEach(function(post) {
+
+        if (post.get('ignore'))
+          return;
+
+        var originalFilename = post.get('outFilename');
+        console.log('**** ' + originalFilename);
+
+        var matches = /(\d\d\d\d)-(\d\d)-(\d\d)/.exec(originalFilename);
+        if (matches.length != 4) {  // full match + year + month + day
+          return;
         }
 
-        return post.setUrl(dateUrl);
+        var date = new Date(matches[1] + '-' + matches[2] + '-' + matches[3]);
+
+        var newFilename = originalFilename.replace(post_date_regex, '');
+        var newOutPath = path.join(this.docpad.config.outPath, matches[1], matches[2], newFilename);
+        var newUrl = '/' + matches[1] + '/' + matches[2] + '/' + newFilename;
+
+        // ensure original urls are kept
+        var originalUrl = post.get('originalUrl');
+        if (originalUrl && (originalUrl != newUrl)) {
+          throw 'Urls do not match "' + originalUrl + '" <-> "' + newUrl + '"';
+        }
+
+        post.set('outPath', newOutPath);
+        post.setUrl(newUrl);
+
+        count = count + 1;
       });
+
+      console.log('Processed posts count: ' + count);
+      console.log('');
+
     }
   },
 

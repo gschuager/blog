@@ -1,10 +1,9 @@
 ---
 layout: 'default'
 title: 'Test'
+ignore: true
 ---
 
-<pre>
-  <code>
+```
 <%- JSON.stringify(@getFilesAtPath("posts"), null, 4) %>
-  </code>
-</pre>
+```
