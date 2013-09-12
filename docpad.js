@@ -8,7 +8,7 @@ var docpadConfig = {
   templateData: {
 
     site: {
-      url: "http://schuager.com",
+      url: "http://blog.schuager.com",
       title: "Germán Schuager's blog"
     },
 
